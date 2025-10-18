@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Malware Behavior Simulator — Educational</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Malware Behavior Simulator (Educational, Safe)</h1>
+    <p class="subtitle">Simulates conceptual behaviors of Viruses, Worms, and Trojans — visual, offline, and harmless.</p>
+  </header>
+
+  <main>
+    <section class="controls">
+      <div class="control-row">
+        <label for="malwareType">Malware Type:</label>
+        <select id="malwareType">
+          <option value="virus">Virus (local replication / host degradation)</option>
+          <option value="worm">Worm (fast network spread)</option>
+          <option value="trojan">Trojan (dormant, triggered)</option>
+        </select>
+
+        <label for="gridSize">Grid:</label>
+        <select id="gridSize">
+          <option value="10">10 × 10</option>
+          <option value="12" selected>12 × 12</option>
+          <option value="16">16 × 16</option>
+        </select>
+
+        <label for="speedRange">Speed:</label>
+        <input id="speedRange" type="range" min="200" max="1200" step="100" value="600" />
+        <span id="speedVal">600 ms</span>
+      </div>
+
+      <div class="control-row">
+        <button id="resetBtn">Reset Grid</button>
+        <button id="seedBtn">Seed Random Infection</button>
+        <button id="startBtn">Start</button>
+        <button id="pauseBtn">Pause</button>
+        <button id="triggerTrojanBtn">Trigger Trojan</button>
+        <button id="exportBtn">Export Report</button>
+      </div>
+
+      <p class="help">Click a node to toggle an initial infection seed. Hover nodes for details.</p>
+    </section>
+
+    <section class="sim-area">
+      <div id="gridContainer" aria-label="simulation grid"></div>
+
+      <aside class="sidebar">
+        <div class="stats">
+          <h3>Simulation Stats</h3>
+          <p>Tick: <span id="tick">0</span></p>
+          <p>Clean: <span id="stat-clean">0</span></p>
+          <p>Infected: <span id="stat-infected">0</span></p>
+          <p>Recovered/Immune: <span id="stat-immune">0</span></p>
+        </div>
+
+        <div class="log">
+          <h3>Event Log</h3>
+          <div id="logArea" class="logArea" aria-live="polite"></div>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      <small>For educational use only — this sim does not perform any real infections or network activity.</small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
